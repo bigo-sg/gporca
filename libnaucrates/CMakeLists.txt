@@ -12,11 +12,13 @@ file(GLOB_RECURSE srcs ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 # Add headers to make them visible in some IDEs (Clion, VS, Xcode)
 list(APPEND srcs ${hdrs})
 
-add_library(naucrates ${srcs})
+add_library(naucrates STATIC ${srcs})
 
 target_link_libraries(naucrates
                       ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS}
                       gpos
+                      icuuc
+                      icudata
                       ${XERCES_LIBRARIES}
                       ${GPORCA_SOLARIS_EXTRA_LIBS})
 
